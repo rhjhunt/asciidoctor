@@ -1,5 +1,7 @@
 # asciidoctor container
 
+![Docker Image CI](https://github.com/rhjhunt/asciidoctor/workflows/Docker%20Image%20CI/badge.svg)
+
 Container for asciidoctor built on Fedora.
 
 ## Pull
