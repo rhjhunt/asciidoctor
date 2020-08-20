@@ -1,13 +1,13 @@
-FROM registry.fedoraproject.org/fedora-minimal:latest
+FROM registry.fedoraproject.org/fedora-minimal:32
 
 LABEL   name="asciidoctor" \
-        version="1.0" \
+        version="1.1" \
         architecture="x86_64" \
         vcs-type="git" \
         summary="Open source AsciiDoc implementation in Ruby" \
         maintainer="Jacob Hunt <jhunt@redhat.com>" \
         run="podman run --rm -it --volume ${HOME}:${HOME}:rslave --env HOME=${HOME} \
-             --workdir $(pwd) --security-opt label=disable <container name>"
+             --workdir $(pwd) --security-opt label=disable rhjhunt/asciidoctor"
 
 RUN microdnf -y --nodocs update && \
     microdnf -y --nodocs install ruby ruby-devel && \
