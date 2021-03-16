@@ -1,7 +1,7 @@
-FROM registry.fedoraproject.org/fedora-minimal:32
+FROM registry.fedoraproject.org/fedora-minimal:33
 
 LABEL   name="asciidoctor" \
-        version="1.1" \
+        version="1.2" \
         architecture="x86_64" \
         vcs-type="git" \
         summary="Open source AsciiDoc implementation in Ruby" \
