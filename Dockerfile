@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:34
+FROM registry.access.redhat.com/ubi8-minimal:latest
 
 LABEL   name="asciidoctor" \
         version="1.3" \
@@ -11,11 +11,9 @@ LABEL   name="asciidoctor" \
 
 RUN microdnf -y --nodocs update && \
     microdnf -y --nodocs install ruby ruby-devel && \
-    microdnf -y --nodocs install rubygem-asciidoctor rubygem-asciidoctor-pdf && \
-    microdnf -y --nodocs install rubygem-rouge && \
     microdnf clean all  && \
     rm -rf /var/cache/yum && \
-    gem install --no-document asciidoctor-diagram
+    gem install --no-document asciidoctor asciidoctor-pdf rouge asciidoctor-diagram
 
 WORKDIR /documents
 VOLUME ["/documents"]
