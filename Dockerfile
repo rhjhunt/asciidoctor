@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8-minimal:latest
 
 LABEL   name="asciidoctor" \
-        version="1.3" \
+        version="1.4" \
         architecture="x86_64" \
         vcs-type="git" \
         summary="Open source AsciiDoc implementation in Ruby" \
@@ -9,7 +9,7 @@ LABEL   name="asciidoctor" \
         run="podman run --rm -it --volume ${HOME}:${HOME}:rslave --env HOME=${HOME} \
              --workdir $(pwd) --security-opt label=disable rhjhunt/asciidoctor"
 
-RUN echo -e "[ruby]\nname=ruby\nstream=2.7\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/ruby.module && \
+RUN echo -e "[ruby]\nname=ruby\nstream=3.0\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/ruby.module && \
     microdnf -y --nodocs update && \
     microdnf -y --nodocs install ruby ruby-devel && \
     microdnf clean all  && \
