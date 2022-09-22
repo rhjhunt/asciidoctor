@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8-minimal:latest
+FROM registry.access.redhat.com/ubi9-minimal
 
 LABEL   name="asciidoctor" \
         version="1.4" \
@@ -9,11 +9,8 @@ LABEL   name="asciidoctor" \
         run="podman run --rm -it --volume ${HOME}:${HOME}:rslave --env HOME=${HOME} \
              --workdir $(pwd) --security-opt label=disable rhjhunt/asciidoctor"
 
-RUN echo -e "[ruby]\nname=ruby\nstream=3.0\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/ruby.module && \
-    microdnf -y --nodocs update && \
-    microdnf -y --nodocs install ruby ruby-devel && \
-    microdnf clean all  && \
-    rm -rf /var/cache/yum && \
+RUN microdnf install -y --setopt install_weak_deps=0 --nodocs ruby ruby-devel && \
+    microdnf clean all --enablerepo='*'  && \
     gem install --no-document asciidoctor asciidoctor-pdf rouge asciidoctor-diagram
 
 WORKDIR /documents
