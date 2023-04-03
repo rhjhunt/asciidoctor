@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi9-minimal
 
 LABEL   name="asciidoctor" \
-        version="1.4" \
+        version="1.5" \
         architecture="x86_64" \
         vcs-type="git" \
         summary="Open source AsciiDoc implementation in Ruby" \
